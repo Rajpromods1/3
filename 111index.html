@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loss Prediction Mode</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      color: red;
+      font-size: 2em;
+      margin-bottom: 10px;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { text-shadow: 0 0 5px red; }
+      50% { text-shadow: 0 0 20px red; }
+      100% { text-shadow: 0 0 5px red; }
+    }
+
+    .card {
+      background: #1a1a1a;
+      border: 2px solid red;
+      padding: 20px;
+      border-radius: 15px;
+      width: 300px;
+      box-shadow: 0 0 20px #ff0000aa;
+    }
+
+    .round {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+
+    .prediction {
+      font-size: 2.2em;
+      font-weight: bold;
+      color: #ff4d4d;
+    }
+
+    button {
+      margin-top: 15px;
+      background: red;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff1a1a;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>LOSS MODE 🔴 ON</h1>
+  <div class="card">
+    <div class="round">Round: <span id="round">726</span></div>
+    <div class="prediction" id="prediction">BIG</div>
+    <button onclick="nextLoss()">Next Prediction ❌</button>
+  </div>
+
+  <script>
+    let round = 726;
+    let lossOptions = ['BIG', 'SMALL'];
+
+    function nextLoss() {
+      round++;
+      document.getElementById('round').innerText = round;
+
+      // alternate wrong predictions for fun
+      const wrong = lossOptions[round % 2];
+      document.getElementById('prediction').innerText = wrong;
+    }
+  </script>
+</body>
+</html>
